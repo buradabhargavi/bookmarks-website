@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin: 3% 25%;
+  width: 50%;
+  gap: 20px;
+  border-radius: 15px;
+  background-color: rgb(180, 176, 180);
+}
+
+.BookMark {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  text-align: start;
+  gap: 10px;
+}

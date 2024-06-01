@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import AddBookMark from "./components/AddBookMark";
+import HomeComponent from "./components/HomeComponent";
+import BookMarksProvider from "./Store/BookMarksProvider";
+import BookMarksList from "./components/Display/BookMarksList";
 
 function App() {
+  const [onAdd, setOnAdd] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+
+  const openAddModal = () => {
+    setOnAdd(true);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BookMarksProvider>
+      <div className="App">
+        <HomeComponent onTouch={openAddModal} />
+        {onAdd && <AddBookMark onClose={() => setOnAdd(false)} />}
+        <BookMarksList />
+      </div>
+    </BookMarksProvider>
   );
 }
 
